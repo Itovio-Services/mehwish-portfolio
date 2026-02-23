@@ -29,7 +29,7 @@ export default function Home() {
   const projects = [
     { tag: 'AI Product', title: 'PrecisionFlow.io', desc: 'Autonomous AI agent generating daily crypto content for Binance Square — analyzing markets and posting 24/7.', link: 'https://precisionflow.io' },
     { tag: 'Company', title: 'PrecisionTechInsights', desc: 'My tech company offering AI development, cybersecurity, Web3, and complete digital solutions.', link: 'https://precisiontechinsights.com' },
-    { tag: 'Content Platform', title: 'EchoForTruth', desc: 'Spiritual and Islamic content creation platform delivering meaningful content to audiences.', link: 'https://echofortruth.onrender.com' },
+    { tag: 'Personal Brand', title: 'LinkedIn Profile', desc: 'Building my personal brand on LinkedIn with 5K+ followers — sharing insights on AI, cybersecurity, and Web3.', link: 'https://linkedin.com/in/itisharis' },
   ];
 
   return (
@@ -53,11 +53,13 @@ export default function Home() {
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '6px 16px', borderRadius: 100, marginBottom: 40 }}>
             <span style={{ width: 6, height: 6, background: 'var(--accent)', borderRadius: '50%', animation: 'pulse 2s infinite' }} />
-            Available for projects · Karachi, Pakistan
+            Available for projects worldwide (remote)
           </div>
 
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(52px, 9vw, 120px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 0.95, marginBottom: 32 }}>
-            <span className="typewriter">Building intelligent systems.</span>
+            <span className="typewriter" style={{ display: 'block' }}>Building</span>
+            <span style={{ color: 'var(--text2)' }}>intelligent</span><br />
+            <span style={{ color: 'var(--accent)' }}>systems.</span>
           </h1>
 
           <p style={{ fontSize: 18, color: 'var(--text2)', maxWidth: 500, lineHeight: 1.75, fontWeight: 300, marginBottom: 32 }}>

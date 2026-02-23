@@ -16,7 +16,27 @@ function useReveal() {
 
 const services = [
   {
-    num: '01', icon: '⚡', title: 'AI Agent Development & Automation',
+    num: '01', icon: '🚀', title: 'Complete Brand & Digital Infrastructure Package',
+    short: 'Everything your startup needs — from brand identity to live infrastructure.',
+    desc: 'The ultimate all-in-one solution for startups and businesses. I handle your complete digital presence from scratch: brand entity creation, professional website development, domain registration and configuration, custom hosting setup, brand logo design, social media handles setup across all platforms, security audit, SSL certificates, professional email, ongoing maintenance, and technical support. You get a complete, production-ready digital presence without managing multiple vendors.',
+    features: [
+      'Complete brand entity creation & strategy',
+      'Professional website development (WordPress, Next.js, custom)',
+      'Domain registration & DNS configuration',
+      'White-label hosting with custom nameservers',
+      'Professional brand logo & visual identity',
+      'Social media handles setup (Instagram, LinkedIn, Twitter, etc.)',
+      'Security audit & SSL certificate setup',
+      'Professional email hosting & configuration',
+      'SEO optimization & Google Analytics setup',
+      'Content management system training',
+      'Ongoing maintenance & technical support',
+      'Regular backups & security monitoring'
+    ],
+    cta: { label: 'View Complete Package →', href: 'https://hosting.harishere.com' },
+  },
+  {
+    num: '02', icon: '⚡', title: 'AI Agent Development & Automation',
     short: 'Autonomous AI systems that work 24/7.',
     desc: 'I design and build custom AI agents for businesses that want to automate workflows, generate content at scale, process data autonomously, or run intelligent customer interactions. PrecisionFlow.io is my live proof — an autonomous agent generating daily crypto content.',
     features: [
@@ -31,9 +51,9 @@ const services = [
     ],
   },
   {
-    num: '02', icon: '🔐', title: 'Cybersecurity Audit & Penetration Testing',
+    num: '03', icon: '🔐', title: 'Cybersecurity Audit & Penetration Testing',
     short: 'Find vulnerabilities before attackers do.',
-    desc: 'Using Kali Linux and industry-standard tools, I conduct comprehensive web application security assessments that identify real vulnerabilities in your systems. I provide detailed reports with severity ratings and actionable fixes.',
+    desc: 'Using Kali Linux and industry-standard tools, I conduct comprehensive web application security assessments that identify real vulnerabilities in your systems. I provide detailed reports with severity ratings and actionable fixes — not just a list of problems.',
     features: [
       'Web application penetration testing',
       'Vulnerability assessment & reporting',
@@ -46,7 +66,7 @@ const services = [
     ],
   },
   {
-    num: '03', icon: '⛓', title: 'Web3 & Blockchain Development',
+    num: '04', icon: '⛓', title: 'Web3 & Blockchain Development',
     short: 'Build on the decentralized web.',
     desc: 'I help businesses and projects enter the Web3 space with smart contract interfaces, token-gated platforms, NFT systems, and DeFi tooling. I understand the full stack — from Solidity contracts to the frontend that interacts with them.',
     features: [
@@ -61,7 +81,7 @@ const services = [
     ],
   },
   {
-    num: '04', icon: '🌐', title: 'Full-Stack Web Development',
+    num: '05', icon: '🌐', title: 'Full-Stack Web Development',
     short: 'Professional websites that perform.',
     desc: 'From fast-loading portfolio sites to complex business platforms, I build websites that look sharp, load fast, and work on every device. I work with WordPress, Next.js, React, and custom stacks depending on what the project needs.',
     features: [
@@ -76,24 +96,9 @@ const services = [
     ],
   },
   {
-    num: '05', icon: '🖥', title: 'Server Infrastructure & Hosting',
-    short: 'Enterprise-grade infrastructure management.',
-    desc: 'I manage white-label hosting infrastructure with custom nameservers, SSL management, DNS architecture, and DirectAdmin. I run real server infrastructure for businesses that need reliable, professional hosting.',
-    features: [
-      'White-label hosting setup',
-      'Custom nameserver configuration',
-      'SSL certificate management',
-      'DNS architecture & management',
-      'DirectAdmin server control',
-      'Email hosting setup',
-      'Regular backups & monitoring',
-      'Performance optimization'
-    ],
-  },
-  {
     num: '06', icon: '📈', title: 'LinkedIn Content & Personal Branding',
     short: 'Build your technical audience.',
-    desc: 'I help technical founders and professionals build their personal brand on LinkedIn through strategic content, AI-powered writing systems, and audience growth strategies. I've grown to 5,000+ followers and bring that expertise to help you.',
+    desc: 'I help technical founders and professionals build their personal brand on LinkedIn through strategic content, AI-powered writing systems, and audience growth strategies. I have grown to 5,000+ followers and bring that expertise to help you.',
     features: [
       'LinkedIn content strategy',
       'AI-powered content generation',
@@ -113,7 +118,7 @@ export default function Services() {
     <Layout>
       <Head>
         <title>Services — Haris</title>
-        <meta name="description" content="AI development, cybersecurity, Web3, full-stack development, infrastructure, and personal branding services." />
+        <meta name="description" content="Complete digital solutions: brand creation, AI development, cybersecurity, Web3, full-stack development, and personal branding." />
       </Head>
 
       {/* Hero */}
@@ -121,17 +126,17 @@ export default function Services() {
         <div className="container">
           <p className="section-tag">Services</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 700, lineHeight: 1.1, marginBottom: 20, maxWidth: 800 }}>
-            <span className="typewriter">Everything you need to build, secure, and scale.</span>
+            <span className="typewriter" style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>Build. Secure. Scale.</span>
           </h1>
           <p style={{ fontSize: 17, color: 'var(--text2)', lineHeight: 1.8, fontWeight: 300, marginTop: 20, maxWidth: 600 }}>
-            From AI development to cybersecurity, Web3 to infrastructure — I provide complete technical solutions for startups and businesses.
+            From complete brand creation to AI development, cybersecurity to Web3 — I provide end-to-end technical solutions for startups and businesses.
           </p>
           <div className="floating-skills" style={{ marginTop: 32 }}>
+            <span className="skill-badge">Brand Creation</span>
             <span className="skill-badge">AI Development</span>
             <span className="skill-badge">Cybersecurity</span>
             <span className="skill-badge">Web3</span>
             <span className="skill-badge">Full-Stack</span>
-            <span className="skill-badge">Infrastructure</span>
             <span className="skill-badge">Branding</span>
           </div>
         </div>
@@ -166,6 +171,11 @@ export default function Services() {
                       </div>
                     ))}
                   </div>
+                  {service.cta && (
+                    <a href={service.cta.href} target="_blank" rel="noreferrer" className="btn btn-primary">
+                      {service.cta.label}
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -180,7 +190,7 @@ export default function Services() {
             Ready to work together?
           </h2>
           <p style={{ margin: '0 auto 36px', textAlign: 'center', maxWidth: 500, fontSize: 16, color: 'var(--text2)' }} className="reveal">
-            Whether you need AI development, security audits, Web3 solutions, or complete digital infrastructure — let's discuss your project.
+            Whether you need complete brand creation, AI development, security audits, or Web3 solutions — let's discuss your project.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary reveal">Get Started</Link>

@@ -104,6 +104,16 @@ export default function Navbar() {
           >
             LinkedIn
           </a>
+
+          <a
+            href="https://github.com/harisxcyber"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-ghost"
+            style={{ fontSize: 14, padding: '10px 20px' }}
+          >
+            GitHub
+          </a>
         </div>
       </div>
     </nav>

@@ -43,6 +43,7 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
               {[
                 { label: 'LI', href: 'https://linkedin.com/in/itisharis' },
+                { label: 'GH', href: 'https://github.com/harisxcyber' },
                 { label: 'WA', href: 'https://wa.me/923481383350' },
               ].map(s => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
