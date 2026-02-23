@@ -52,12 +52,27 @@ export default function About() {
               </div>
             </div>
             <div style={{ position: 'relative' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
-                {[1, 2, 3, 4, 5].map(i => (
-                  <div key={i} style={{ position: 'relative', aspectRatio: '1/1', borderRadius: 8, overflow: 'hidden', border: '2px solid var(--border)', background: 'var(--bg2)' }}>
-                    <Image src={`/images/haris-${i}.${i === 1 ? 'png' : 'jpg'}`} alt="Haris" fill style={{ objectFit: 'cover' }} />
-                  </div>
-                ))}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr 1fr', gridTemplateRows: '1fr 1fr', gap: 12, height: '420px', width: '120%' }}>
+                {/* Top Left */}
+                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
+                  <Image src="/images/haris-2.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                </div>
+                {/* Center - Blue BG (spans 2 rows) */}
+                <div style={{ position: 'relative', gridRow: 'span 2', borderRadius: 12, overflow: 'hidden', border: '4px solid var(--accent)', background: 'var(--bg2)', boxShadow: '0 12px 32px rgba(59,130,246,0.2)' }}>
+                  <Image src="/images/haris-1.png" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                </div>
+                {/* Top Right */}
+                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
+                  <Image src="/images/haris-3.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                </div>
+                {/* Bottom Left */}
+                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
+                  <Image src="/images/haris-4.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                </div>
+                {/* Bottom Right */}
+                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
+                  <Image src="/images/haris-5.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                </div>
               </div>
             </div>
           </div>
