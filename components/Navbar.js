@@ -38,6 +38,7 @@ export default function Navbar() {
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 72,
+        padding: '0 20px',
       }}>
         <Link href="/" style={{
           fontFamily: 'var(--font-display)',
@@ -89,24 +90,43 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="mobile-menu-btn"
-          style={{
-            display: 'none',
-            background: 'var(--bg2)',
-            border: '1px solid var(--border)',
-            borderRadius: 8,
-            width: 40,
-            height: 40,
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            fontSize: 20,
-          }}
-        >
-          {mobileOpen ? '✕' : '☰'}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="mobile-menu-container">
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'var(--bg2)',
+              border: '1px solid var(--border)',
+              borderRadius: 8,
+              width: 40,
+              height: 40,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+            }}
+            className="mobile-theme-btn"
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="mobile-menu-btn"
+            style={{
+              display: 'none',
+              background: 'var(--bg2)',
+              border: '1px solid var(--border)',
+              borderRadius: 8,
+              width: 40,
+              height: 40,
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              fontSize: 20,
+            }}
+          >
+            {mobileOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -114,9 +134,9 @@ export default function Navbar() {
         <div className="mobile-menu" style={{
           background: 'var(--bg)',
           borderTop: '1px solid var(--border)',
-          padding: '20px 0',
+          padding: '20px',
         }}>
-          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {[
               { href: '/services', label: 'Services' },
               { href: '/projects', label: 'Projects' },
@@ -128,26 +148,14 @@ export default function Navbar() {
                 fontWeight: 500,
                 color: isActive(link.href) ? 'var(--accent)' : 'var(--text2)',
                 textDecoration: 'none',
-                padding: '8px 0',
+                padding: '12px 16px',
+                borderRadius: 8,
+                background: isActive(link.href) ? 'var(--accent-light)' : 'transparent',
+                transition: 'all 0.2s',
               }}>
                 {link.label}
               </Link>
             ))}
-            <button
-              onClick={toggleTheme}
-              style={{
-                background: 'var(--bg2)',
-                border: '1px solid var(--border)',
-                borderRadius: 8,
-                padding: '12px',
-                cursor: 'pointer',
-                fontSize: 14,
-                color: 'var(--text)',
-                textAlign: 'left',
-              }}
-            >
-              {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-            </button>
           </div>
         </div>
       )}
@@ -156,6 +164,10 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .desktop-menu { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          .mobile-theme-btn { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu-container { display: none !important; }
         }
       `}</style>
     </nav>

@@ -37,6 +37,7 @@ export default function Home() {
       <Head>
         <title>Haris — AI Engineer, Cybersecurity & Web3 Developer</title>
         <meta name="description" content="CEO of PrecisionTechInsights. Building intelligent systems at the intersection of AI, Web3, and security." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
       </Head>
 
       {/* HERO */}

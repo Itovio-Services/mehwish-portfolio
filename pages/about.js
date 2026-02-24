@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
+import React from 'react';
 
 function useReveal() {
   useEffect(() => {
@@ -26,6 +27,16 @@ const timeline = [
 
 export default function About() {
   useReveal();
+  const [lightboxImage, setLightboxImage] = React.useState(null);
+
+  const images = [
+    '/images/haris-2.jpg',
+    '/images/haris-1.png',
+    '/images/haris-3.jpg',
+    '/images/haris-4.jpg',
+    '/images/haris-5.jpg',
+  ];
+
   return (
     <Layout>
       <Head>
@@ -33,45 +44,94 @@ export default function About() {
         <meta name="description" content="CEO of PrecisionTechInsights. My journey from gaming to building AI, cybersecurity, and Web3 solutions." />
       </Head>
 
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.95)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 20,
+          }}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 20,
+              background: 'white',
+              border: 'none',
+              borderRadius: '50%',
+              width: 40,
+              height: 40,
+              fontSize: 24,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#000',
+              fontWeight: 'bold',
+            }}
+          >
+            ✕
+          </button>
+          <img 
+            src={lightboxImage} 
+            alt="Full size" 
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: 'contain',
+              borderRadius: 8,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       {/* Hero */}
       <section style={{ padding: '100px 0 80px', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 60% at 30% 50%, rgba(59,130,246,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+          <div className="about-hero-grid">
             <div>
               <p className="section-tag">About</p>
-              <h1 className="section-title" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+              <h1 className="section-title" style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
                 I'm Haris.<br /><span style={{ color: 'var(--text2)' }}>Building intelligent systems.</span>
               </h1>
               <p style={{ fontSize: 17, color: 'var(--text2)', lineHeight: 1.8, fontWeight: 300, marginTop: 20 }}>
                 CEO of PrecisionTechInsights. I operate at the intersection of AI, cybersecurity, Web3, and web infrastructure — delivering complete digital solutions from Karachi, Pakistan.
               </p>
-              <div style={{ display: 'flex', gap: 14, marginTop: 32 }}>
+              <div className="about-buttons">
                 <Link href="/contact" className="btn btn-primary">Work With Me</Link>
                 <a href="https://linkedin.com/in/itisharis" target="_blank" rel="noreferrer" className="btn btn-ghost">LinkedIn →</a>
               </div>
             </div>
-            <div style={{ position: 'relative' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr 1fr', gridTemplateRows: '1fr 1fr', gap: 12, height: '420px', width: '120%' }}>
-                {/* Top Left */}
-                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
-                  <Image src="/images/haris-2.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+            <div className="about-images">
+              <div className="image-grid">
+                <div className="img-box img-small" onClick={() => setLightboxImage(images[0])} style={{ cursor: 'pointer' }}>
+                  <img src={images[0]} alt="Haris" />
                 </div>
-                {/* Center - Blue BG (spans 2 rows) */}
-                <div style={{ position: 'relative', gridRow: 'span 2', borderRadius: 12, overflow: 'hidden', border: '4px solid var(--accent)', background: 'var(--bg2)', boxShadow: '0 12px 32px rgba(59,130,246,0.2)' }}>
-                  <Image src="/images/haris-1.png" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                <div className="img-box img-large" onClick={() => setLightboxImage(images[1])} style={{ cursor: 'pointer' }}>
+                  <img src={images[1]} alt="Haris" />
                 </div>
-                {/* Top Right */}
-                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
-                  <Image src="/images/haris-3.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                <div className="img-box img-small" onClick={() => setLightboxImage(images[2])} style={{ cursor: 'pointer' }}>
+                  <img src={images[2]} alt="Haris" />
                 </div>
-                {/* Bottom Left */}
-                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
-                  <Image src="/images/haris-4.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                <div className="img-box img-small" onClick={() => setLightboxImage(images[3])} style={{ cursor: 'pointer' }}>
+                  <img src={images[3]} alt="Haris" />
                 </div>
-                {/* Bottom Right */}
-                <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '3px solid var(--border)', background: 'var(--bg2)', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}>
-                  <Image src="/images/haris-5.jpg" alt="Haris" fill style={{ objectFit: 'cover' }} />
+                <div className="img-box img-small" onClick={() => setLightboxImage(images[4])} style={{ cursor: 'pointer' }}>
+                  <img src={images[4]} alt="Haris" />
                 </div>
               </div>
             </div>
