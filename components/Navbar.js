@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export default function Navbar() {
   const router = useRouter();
   const [theme, setTheme] = useState('light');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme') || 'light';
@@ -48,7 +49,8 @@ export default function Navbar() {
           haris<span style={{ color: 'var(--accent)' }}>.</span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        {/* Desktop Menu */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }} className="desktop-menu">
           {[
             { href: '/services', label: 'Services' },
             { href: '/projects', label: 'Projects' },
@@ -84,38 +86,78 @@ export default function Navbar() {
           >
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-
-          <a
-            href="https://wa.me/923481383350"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary"
-            style={{ fontSize: 14, padding: '10px 20px', background: '#25D366' }}
-          >
-            WhatsApp
-          </a>
-
-          <a
-            href="https://linkedin.com/in/itisharis"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-ghost"
-            style={{ fontSize: 14, padding: '10px 20px' }}
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href="https://github.com/harisxcyber"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-ghost"
-            style={{ fontSize: 14, padding: '10px 20px' }}
-          >
-            GitHub
-          </a>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="mobile-menu-btn"
+          style={{
+            display: 'none',
+            background: 'var(--bg2)',
+            border: '1px solid var(--border)',
+            borderRadius: 8,
+            width: 40,
+            height: 40,
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            fontSize: 20,
+          }}
+        >
+          {mobileOpen ? '✕' : '☰'}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="mobile-menu" style={{
+          background: 'var(--bg)',
+          borderTop: '1px solid var(--border)',
+          padding: '20px 0',
+        }}>
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {[
+              { href: '/services', label: 'Services' },
+              { href: '/projects', label: 'Projects' },
+              { href: '/about', label: 'About' },
+              { href: '/contact', label: 'Contact' },
+            ].map(link => (
+              <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: isActive(link.href) ? 'var(--accent)' : 'var(--text2)',
+                textDecoration: 'none',
+                padding: '8px 0',
+              }}>
+                {link.label}
+              </Link>
+            ))}
+            <button
+              onClick={toggleTheme}
+              style={{
+                background: 'var(--bg2)',
+                border: '1px solid var(--border)',
+                borderRadius: 8,
+                padding: '12px',
+                cursor: 'pointer',
+                fontSize: 14,
+                color: 'var(--text)',
+                textAlign: 'left',
+              }}
+            >
+              {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .desktop-menu { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
+        }
+      `}</style>
     </nav>
   );
 }

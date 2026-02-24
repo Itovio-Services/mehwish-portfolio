@@ -14,7 +14,6 @@ export default function Footer() {
               Building intelligent, secure systems at the intersection of AI, cybersecurity, and Web3.
             </p>
           </div>
-
           {/* Quick Links */}
           <div>
             <p style={{ fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 16 }}>Navigation</p>
