@@ -1,0 +1,8 @@
+"use strict";(()=>{var e={};e.id=91,e.ids=[91],e.modules={145:e=>{e.exports=require("next/dist/compiled/next-server/pages-api.runtime.prod.js")},8275:(e,r,s)=>{s.r(r),s.d(r,{config:()=>l,default:()=>p,routeModule:()=>d});var t={};s.r(t),s.d(t,{default:()=>handler});var o=s(1802),a=s(7153),n=s(6249);let i=require("nodemailer");var c=s.n(i);async function handler(e,r){if("POST"!==e.method)return r.status(405).json({error:"Method not allowed"});let{name:s,email:t,service:o,message:a}=e.body,n=c().createTransport({host:process.env.SMTP_HOST||"smtp.gmail.com",port:process.env.SMTP_PORT||587,secure:!1,auth:{user:process.env.SMTP_USER,pass:process.env.SMTP_PASS}});try{await n.sendMail({from:`"Haris (harishere.com)" <${process.env.SMTP_USER}>`,to:"contact@harishere.com",replyTo:t,subject:`New Contact Form: ${o}`,html:`
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${s}</p>
+        <p><strong>Email:</strong> ${t}</p>
+        <p><strong>Service:</strong> ${o}</p>
+        <p><strong>Message:</strong></p>
+        <p>${a}</p>
+      `}),r.status(200).json({success:!0})}catch(e){console.error("Email error:",e),r.status(500).json({error:"Failed to send email"})}}let p=(0,n.l)(t,"default"),l=(0,n.l)(t,"config"),d=new o.PagesAPIRouteModule({definition:{kind:a.x.PAGES_API,page:"/api/contact",pathname:"/api/contact",bundlePath:"",filename:""},userland:t})}};var r=require("../../webpack-api-runtime.js");r.C(e);var __webpack_exec__=e=>r(r.s=e),s=r.X(0,[222],()=>__webpack_exec__(8275));module.exports=s})();
