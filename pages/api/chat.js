@@ -12,7 +12,8 @@ About the Team:
 - Founded by Haris, who leads development and brings clients through personal branding
 - Operating under PrecisionTechInsights (precisiontechinsights.com) as the company structure
 - Built PrecisionFlow.io — an AI agent that autonomously generates crypto content for Binance Square
-- Runs white-label web hosting at hosting.harishere.com with enterprise infrastructure
+- Currently CEO at Itovio.com leading a team of specialists
+- Runs enterprise infrastructure and white-label solutions
 - 5,000+ LinkedIn followers, recognized in AI, cybersecurity, and Web3 spaces
 
 Services We Offer:

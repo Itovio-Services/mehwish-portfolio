@@ -7,33 +7,35 @@ export default async function handler(req, res) {
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: process.env.SMTP_PORT || 587,
+    port: parseInt(process.env.SMTP_PORT) || 587,
     secure: false,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: process.env.SMTP_USER || 'muhammadharissahabb@gmail.com',
+      pass: process.env.SMTP_PASS || 'duzmnrtqqldxyjvq',
     },
   });
 
   try {
     await transporter.sendMail({
-      from: `"Haris (harishere.com)" <${process.env.SMTP_USER}>`,
-      to: 'contact@harishere.com',
+      from: `"Haris Portfolio Contact" <${process.env.EMAIL_FROM || 'muhammadharissahabb@gmail.com'}>`,
+      to: process.env.EMAIL_TO || 'muhammadharissahabb@gmail.com',
       replyTo: email,
-      subject: `New Contact Form: ${service}`,
+      subject: `Portfolio Contact: ${service || 'General Inquiry'}`,
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>New Contact Form Submission from harishere.com</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Service:</strong> ${service || 'General Inquiry'}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
+        <hr>
+        <p><small>Sent from harishere.com contact form</small></p>
       `,
     });
 
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Email error:', error);
-    res.status(500).json({ error: 'Failed to send email' });
+    res.status(500).json({ error: 'Failed to send email', details: error.message });
   }
 }

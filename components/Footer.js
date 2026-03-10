@@ -60,7 +60,7 @@ export default function Footer() {
           <p style={{ fontSize: 13, color: 'var(--muted)' }}>© 2026 Haris. All rights reserved.</p>
           <div style={{ display: 'flex', gap: 24 }}>
             {['PrecisionTechInsights', 'PrecisionFlow.io', 'Hosting'].map((l, i) => (
-              <a key={l} href={['https://precisiontechinsights.com', 'https://precisionflow.io', 'https://hosting.harishere.com'][i]}
+              <a key={l} href={['https://precisiontechinsights.com', 'https://precisionflow.io', 'https://itovio.com'][i]}
                 target="_blank" rel="noreferrer"
                 style={{ fontSize: 13, color: 'var(--muted)', transition: 'color 0.2s' }}
                 onMouseEnter={e => e.target.style.color = 'var(--text)'}

@@ -7,7 +7,7 @@ import React from 'react';
 
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
+    const els = document.querySelectorAll('.reveal, .reveal-slide-left, .reveal-slide-right, .reveal-scale, .reveal-rotate');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
@@ -17,12 +17,13 @@ function useReveal() {
 }
 
 const timeline = [
-  { year: '2021 & Before', title: 'Gaming Era', desc: 'Deep into e-gaming as a pro player — Age of Empires, Free Fire, King of Fighters, and all Adobe games. Built competitive gaming skills and strategic thinking.' },
-  { year: '2022', title: 'Gaming & Tech Content', desc: 'Started YouTube channel creating gaming and tech content. Transitioned from gaming to tech, left gaming behind to focus on building real skills.' },
-  { year: '2023', title: 'Web Development Journey', desc: 'Created tech content on YouTube and completed web development courses from Coursera. Started building websites and learning programming fundamentals.' },
-  { year: '2024', title: 'CS50 & Cybersecurity', desc: 'Completed CS50 (Programming with Python) and started learning cybersecurity on TryHackMe. Deep dive into Kali Linux and security tools.' },
-  { year: '2025', title: 'Founded PrecisionTechInsights', desc: 'Launched my tech company. Gained TryHackMe certifications, learned AI agent integration, created PrecisionFlow.io, and explored crypto spot trading with reasonable profits.' },
-  { year: '2026', title: 'Full-Service Platform', desc: 'Transformed into a complete digital solutions platform. CEO of PrecisionTechInsights offering AI, cybersecurity, Web3, and infrastructure services.' },
+  { year: '2020', title: 'Gaming Background', desc: 'Played competitive games like Age of Empires, Free Fire, King of Fighters. Good at gaming but realized it wasn\'t my long-term path.' },
+  { year: '2021', title: 'Content Creation Journey', desc: 'Started YouTube channel creating gaming and tech content. Learned video editing, storytelling, and audience building. First step into the digital world.' },
+  { year: '2022', title: 'Tech Transition', desc: 'Shifted focus from gaming content to tech content. Started exploring web development and programming. Left gaming behind to build real skills.' },
+  { year: '2023', title: 'Web Development', desc: 'Completed courses from Coursera and Codecademy. Built my first websites, learned HTML, CSS, JavaScript, React. Countless late nights debugging code.' },
+  { year: '2024', title: 'Harvard CS50 & Security', desc: 'Completed Harvard CS50 (Programming with Python). Started cybersecurity journey on TryHackMe. Deep dive into Kali Linux, penetration testing, and security tools.' },
+  { year: '2025', title: 'Certifications & AI', desc: 'Earned TryHackMe certifications, LinkedIn Learning certificates. Built PrecisionFlow.io - my first AI agent. Founded PrecisionTechInsights. Explored crypto trading.' },
+  { year: '2026', title: 'CEO at Itovio', desc: 'Launched Itovio.com as the commercial brand. Leading a team of specialists. Shifted from solo freelancer to CEO managing multiple projects and clients.' },
 ];
 
 export default function About() {
@@ -30,11 +31,7 @@ export default function About() {
   const [lightboxImage, setLightboxImage] = React.useState(null);
 
   const images = [
-    '/images/haris-2.jpg',
-    '/images/haris-1.png',
-    '/images/haris-3.jpg',
-    '/images/haris-4.jpg',
-    '/images/haris-5.jpg',
+    '/haris-professional.jpg',
   ];
 
   return (
@@ -100,38 +97,57 @@ export default function About() {
 
       {/* Hero */}
       <section style={{ padding: '100px 0 80px', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 60% at 30% 50%, rgba(59,130,246,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Animated background elements */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'radial-gradient(ellipse 60% 60% at 30% 50%, rgba(59,130,246,0.07) 0%, transparent 70%)', 
+          pointerEvents: 'none',
+          animation: 'float 8s ease-in-out infinite'
+        }} />
+        <div style={{
+          position: 'absolute',
+          width: 300,
+          height: 300,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)',
+          top: '20%',
+          right: '10%',
+          animation: 'float 10s ease-in-out infinite reverse'
+        }} />
+        
         <div className="container" style={{ position: 'relative' }}>
           <div className="about-hero-grid">
             <div>
-              <p className="section-tag">About</p>
-              <h1 className="section-title" style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
-                I'm Haris.<br /><span style={{ color: 'var(--text2)' }}>Building intelligent systems.</span>
+              <p className="section-tag reveal-slide-left">About</p>
+              <h1 className="section-title reveal-slide-left reveal-delay-1" style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
+                I'm Haris.<br /><span style={{ color: 'var(--text2)' }}>Building my story, one step at a time.</span>
               </h1>
-              <p style={{ fontSize: 17, color: 'var(--text2)', lineHeight: 1.8, fontWeight: 300, marginTop: 20 }}>
-                CEO of PrecisionTechInsights. I operate at the intersection of AI, cybersecurity, Web3, and web infrastructure — delivering complete digital solutions from Karachi, Pakistan.
+              <p className="reveal-slide-left reveal-delay-2" style={{ fontSize: 17, color: 'var(--text2)', lineHeight: 1.8, fontWeight: 300, marginTop: 20 }}>
+                This is my personal story — 5 years of ups, downs, failures, and breakthroughs. From casual gaming to building AI systems. Currently CEO at Itovio.com, but this site is about the journey, not the destination.
               </p>
-              <div className="about-buttons">
-                <Link href="/contact" className="btn btn-primary">Work With Me</Link>
-                <a href="https://linkedin.com/in/itisharis" target="_blank" rel="noreferrer" className="btn btn-ghost">LinkedIn →</a>
+              <div className="about-buttons reveal-slide-left reveal-delay-3">
+                <Link href="/contact" className="btn btn-primary hover-lift">Work With Me</Link>
+                <a href="https://linkedin.com/in/itisharis" target="_blank" rel="noreferrer" className="btn btn-ghost hover-lift">LinkedIn →</a>
               </div>
             </div>
             <div className="about-images">
-              <div className="image-grid">
-                <div className="img-box img-small" onClick={() => setLightboxImage(images[0])} style={{ cursor: 'pointer' }}>
-                  <img src={images[0]} alt="Haris" />
-                </div>
-                <div className="img-box img-large" onClick={() => setLightboxImage(images[1])} style={{ cursor: 'pointer' }}>
-                  <img src={images[1]} alt="Haris" />
-                </div>
-                <div className="img-box img-small" onClick={() => setLightboxImage(images[2])} style={{ cursor: 'pointer' }}>
-                  <img src={images[2]} alt="Haris" />
-                </div>
-                <div className="img-box img-small" onClick={() => setLightboxImage(images[3])} style={{ cursor: 'pointer' }}>
-                  <img src={images[3]} alt="Haris" />
-                </div>
-                <div className="img-box img-small" onClick={() => setLightboxImage(images[4])} style={{ cursor: 'pointer' }}>
-                  <img src={images[4]} alt="Haris" />
+              <div className="image-grid reveal-scale reveal-delay-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div className="img-box hover-glow" onClick={() => setLightboxImage(images[0])} style={{ 
+                  cursor: 'pointer', 
+                  width: '100%', 
+                  maxWidth: '400px', 
+                  aspectRatio: '1', 
+                  borderRadius: '50%', 
+                  overflow: 'hidden', 
+                  boxShadow: '0 20px 60px rgba(59,130,246,0.3)',
+                  transition: 'all 0.3s ease',
+                  border: '4px solid var(--accent)'
+                }}>
+                  <img src={images[0]} alt="Muhammad Haris - CEO of PrecisionTechInsights" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} 
+                    onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
+                    onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+                  />
                 </div>
               </div>
             </div>
@@ -217,30 +233,180 @@ export default function About() {
         </div>
       </section>
 
+      {/* Certifications & Achievements */}
+      <section className="section" style={{ background: 'var(--bg2)' }}>
+        <div className="container">
+          <p className="section-tag reveal">Certifications</p>
+          <h2 className="section-title reveal" style={{ marginBottom: 56 }}>What I've earned along the way.</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32 }}>
+            {[
+              { 
+                institution: 'Harvard University', 
+                cert: 'CS50: Programming with Python', 
+                year: '2024',
+                desc: 'Comprehensive computer science fundamentals, algorithms, data structures, and Python programming.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20, fontWeight: 'bold'}}>H</div>
+              },
+              { 
+                institution: 'TryHackMe', 
+                cert: 'Cybersecurity Certifications', 
+                year: '2024-2025',
+                desc: 'Multiple certifications in penetration testing, ethical hacking, and cybersecurity fundamentals.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20, fontWeight: 'bold'}}>T</div>
+              },
+              { 
+                institution: 'Codecademy', 
+                cert: 'Full-Stack Web Development', 
+                year: '2023',
+                desc: 'Complete web development track covering HTML, CSS, JavaScript, React, Node.js, and databases.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20, fontWeight: 'bold'}}>C</div>
+              },
+              { 
+                institution: 'Coursera', 
+                cert: 'Web Development Specialization', 
+                year: '2023',
+                desc: 'University-level courses in web technologies, responsive design, and modern development practices.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#333', fontSize: 20, fontWeight: 'bold'}}>C</div>
+              },
+              { 
+                institution: 'LinkedIn Learning', 
+                cert: 'Multiple Technology Courses', 
+                year: '2026',
+                desc: 'Continuous learning in AI, cybersecurity, business development, and leadership skills.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#333', fontSize: 20, fontWeight: 'bold'}}>L</div>
+              },
+              { 
+                institution: 'Personal Achievement', 
+                cert: '5K+ LinkedIn Followers', 
+                year: '2025-2026',
+                desc: 'Built a technical audience by sharing my learning journey, insights, and authentic experiences.',
+                icon: <div style={{width: 48, height: 48, background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20, fontWeight: 'bold'}}>5K</div>
+              },
+            ].map((cert, i) => (
+              <div key={i} className={`reveal reveal-delay-${i % 3}`}
+                style={{ 
+                  background: 'var(--bg)', 
+                  border: '1px solid var(--border)', 
+                  borderRadius: 12, 
+                  padding: 24,
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = 'var(--accent)';
+                  e.target.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = 'var(--border)';
+                  e.target.style.transform = 'translateY(0)';
+                }}
+              >
+                <div style={{ fontSize: 32, marginBottom: 16 }}>{cert.icon}</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: 8 }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>
+                    {cert.cert}
+                  </h3>
+                  <span style={{ fontSize: 12, color: 'var(--accent)', fontWeight: 600 }}>{cert.year}</span>
+                </div>
+                <p style={{ fontSize: 13, color: 'var(--accent)', marginBottom: 8, fontWeight: 600 }}>
+                  {cert.institution}
+                </p>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.6 }}>
+                  {cert.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Tech Stack */}
       <section className="section">
         <div className="container">
           <p className="section-tag reveal">Tech Stack</p>
-          <h2 className="section-title reveal" style={{ marginBottom: 56 }}>What I work with.</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+          <h2 className="section-title reveal" style={{ marginBottom: 16 }}>What I've Worked With</h2>
+          <p style={{ fontSize: 16, color: 'var(--text2)', maxWidth: 600, marginBottom: 56 }} className="reveal">
+            Technologies and tools I've used throughout my journey from 2020 to 2026.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             {[
-              { cat: 'Languages', items: ['Python', 'JavaScript', 'TypeScript', 'PHP', 'Go', 'Rust'] },
-              { cat: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TailwindCSS', 'HTML/CSS'] },
-              { cat: 'Backend', items: ['Node.js', 'Express', 'Django', 'Flask', 'Laravel'] },
-              { cat: 'AI & Tools', items: ['OpenAI', 'Groq', 'Claude', 'LangChain', 'n8n'] },
-              { cat: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Redis'] },
-              { cat: 'DevOps', items: ['Docker', 'AWS', 'Vercel', 'GitHub Actions', 'Linux'] },
-              { cat: 'Security', items: ['Kali Linux', 'Burp Suite', 'Metasploit', 'Nmap', 'Wireshark'] },
-              { cat: 'Web3', items: ['Solidity', 'Ethers.js', 'Web3.js', 'Hardhat', 'MetaMask'] },
+              { cat: 'Languages', items: ['Python', 'JavaScript', 'TypeScript', 'PHP', 'Go', 'Rust'], color: '#667eea' },
+              { cat: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TailwindCSS', 'HTML/CSS'], color: '#f093fb' },
+              { cat: 'Backend', items: ['Node.js', 'Express', 'Django', 'Flask', 'Laravel'], color: '#4facfe' },
+              { cat: 'AI & Tools', items: ['OpenAI', 'Groq', 'Claude', 'LangChain', 'n8n'], color: '#fa709a' },
+              { cat: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Redis'], color: '#a8edea' },
+              { cat: 'DevOps', items: ['Docker', 'AWS', 'Vercel', 'GitHub Actions', 'Linux'], color: '#ffecd2' },
+              { cat: 'Security', items: ['Kali Linux', 'Burp Suite', 'Metasploit', 'Nmap', 'Wireshark'], color: '#ff9a9e' },
+              { cat: 'Web3', items: ['Solidity', 'Ethers.js', 'Web3.js', 'Hardhat', 'MetaMask'], color: '#a18cd1' },
             ].map((stack, i) => (
               <div key={i} className={`reveal reveal-delay-${i % 4}`}
-                style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: 24 }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, marginBottom: 12, color: 'var(--accent)' }}>
+                style={{ 
+                  background: 'var(--bg2)', 
+                  border: '1px solid var(--border)', 
+                  borderRadius: 16, 
+                  padding: 28,
+                  transition: 'all 0.3s ease',
+                  cursor: 'default',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={e => {
+                  e.target.style.transform = 'translateY(-4px)';
+                  e.target.style.borderColor = stack.color;
+                  e.target.style.boxShadow = `0 8px 32px ${stack.color}20`;
+                }}
+                onMouseLeave={e => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.borderColor = 'var(--border)';
+                  e.target.style.boxShadow = 'none';
+                }}>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: 4,
+                  background: `linear-gradient(90deg, ${stack.color}, ${stack.color}80)`,
+                  borderRadius: '16px 16px 0 0'
+                }} />
+                <h3 style={{ 
+                  fontFamily: 'var(--font-display)', 
+                  fontSize: 18, 
+                  fontWeight: 700, 
+                  marginBottom: 16, 
+                  color: stack.color,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8
+                }}>
+                  <div style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: stack.color
+                  }} />
                   {stack.cat}
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {stack.items.map((item, j) => (
-                    <span key={j} style={{ fontSize: 13, color: 'var(--text2)' }}>• {item}</span>
+                    <span key={j} style={{ 
+                      fontSize: 14, 
+                      color: 'var(--text2)',
+                      padding: '4px 0',
+                      borderLeft: `2px solid ${stack.color}20`,
+                      paddingLeft: 12,
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={e => {
+                      e.target.style.borderLeftColor = stack.color;
+                      e.target.style.color = 'var(--text)';
+                    }}
+                    onMouseLeave={e => {
+                      e.target.style.borderLeftColor = `${stack.color}20`;
+                      e.target.style.color = 'var(--text2)';
+                    }}>
+                      {item}
+                    </span>
                   ))}
                 </div>
               </div>

@@ -27,10 +27,10 @@ const projects = [
     link: 'https://precisiontechinsights.com', status: 'Live',
   },
   {
-    tag: 'Infrastructure', title: 'harishere Hosting Platform',
+    tag: 'Services', title: 'Itovio Services',
     desc: 'White-label reseller hosting infrastructure running on enterprise servers with custom nameservers (ns1/ns2/ns3.harishere.com), SSL management, DirectAdmin, and full client account isolation.',
     tech: ['DirectAdmin', 'DNS', 'SSL', 'Apache', 'Linux'],
-    link: 'https://hosting.harishere.com', status: 'Live',
+    link: 'https://itovio.com', status: 'Live',
   },
   {
     tag: 'Personal Brand', title: 'harishere.com',
@@ -45,10 +45,10 @@ const projects = [
     link: '/contact', status: 'Ongoing',
   },
   {
-    tag: 'LinkedIn', title: 'AI Content System',
-    desc: 'An AI-powered content pipeline that generates consistent, on-brand LinkedIn posts in my voice — helping maintain a 5K+ follower community in AI, cybersecurity, and Web3 without spending hours writing.',
-    tech: ['AI Writing', 'LLMs', 'Automation', 'LinkedIn', 'Personal Brand'],
-    link: 'https://linkedin.com', status: 'Running',
+    tag: 'Personal Brand', title: 'Building Personal Brand',
+    desc: 'Building my personal brand on LinkedIn with 5K+ followers by sharing authentic insights about my journey from gaming to CEO. Documenting every step, failure, and breakthrough in AI, cybersecurity, and entrepreneurship.',
+    tech: ['LinkedIn', 'Personal Branding', 'Storytelling', 'Community Building', 'Authentic Content'],
+    link: 'https://linkedin.com/in/itisharis', status: 'Running',
   },
 ];
 

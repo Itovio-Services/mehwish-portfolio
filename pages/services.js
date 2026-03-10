@@ -33,10 +33,10 @@ const services = [
       'Ongoing maintenance & technical support',
       'Regular backups & security monitoring'
     ],
-    cta: { label: 'View Complete Package →', href: 'https://hosting.harishere.com' },
+    cta: { label: 'Work With My Team →', href: 'https://itovio.com' },
   },
   {
-    num: '02', icon: '⚡', title: 'AI Agent Development & Automation',
+    num: '02', icon: <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 16, fontWeight: 'bold'}}>AI</div>, title: 'AI Agent Development & Automation',
     short: 'Autonomous AI systems that work 24/7.',
     desc: 'I design and build custom AI agents for businesses that want to automate workflows, generate content at scale, process data autonomously, or run intelligent customer interactions. PrecisionFlow.io is my live proof — an autonomous agent generating daily crypto content.',
     features: [
@@ -51,7 +51,7 @@ const services = [
     ],
   },
   {
-    num: '03', icon: '🔐', title: 'Cybersecurity Audit & Penetration Testing',
+    num: '03', icon: <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 14, fontWeight: 'bold'}}>SEC</div>, title: 'Cybersecurity Audit & Penetration Testing',
     short: 'Find vulnerabilities before attackers do.',
     desc: 'Using Kali Linux and industry-standard tools, I conduct comprehensive web application security assessments that identify real vulnerabilities in your systems. I provide detailed reports with severity ratings and actionable fixes — not just a list of problems.',
     features: [
@@ -66,7 +66,7 @@ const services = [
     ],
   },
   {
-    num: '04', icon: '⛓', title: 'Web3 & Blockchain Development',
+    num: '04', icon: <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 14, fontWeight: 'bold'}}>W3</div>, title: 'Web3 & Blockchain Development',
     short: 'Build on the decentralized web.',
     desc: 'I help businesses and projects enter the Web3 space with smart contract interfaces, token-gated platforms, NFT systems, and DeFi tooling. I understand the full stack — from Solidity contracts to the frontend that interacts with them.',
     features: [
@@ -81,7 +81,7 @@ const services = [
     ],
   },
   {
-    num: '05', icon: '🌐', title: 'Full-Stack Web Development',
+    num: '05', icon: <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#333', fontSize: 14, fontWeight: 'bold'}}>WEB</div>, title: 'Full-Stack Web Development',
     short: 'Professional websites that perform.',
     desc: 'From fast-loading portfolio sites to complex business platforms, I build websites that look sharp, load fast, and work on every device. I work with WordPress, Next.js, React, and custom stacks depending on what the project needs.',
     features: [
@@ -96,7 +96,7 @@ const services = [
     ],
   },
   {
-    num: '06', icon: '📈', title: 'LinkedIn Content & Personal Branding',
+    num: '06', icon: <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#333', fontSize: 12, fontWeight: 'bold'}}>BRAND</div>, title: 'LinkedIn Content & Personal Branding',
     short: 'Build your technical audience.',
     desc: 'I help technical founders and professionals build their personal brand on LinkedIn through strategic content, AI-powered writing systems, and audience growth strategies. I have grown to 5,000+ followers and bring that expertise to help you.',
     features: [
@@ -179,6 +179,107 @@ export default function Services() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Itovio Services */}
+      <section className="section" style={{ background: 'var(--bg2)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 64 }}>
+            <p className="section-tag reveal">Team Services</p>
+            <h2 className="section-title reveal" style={{ marginBottom: 16 }}>Itovio Services</h2>
+            <p style={{ fontSize: 16, color: 'var(--text2)', maxWidth: 600, margin: '0 auto 32px' }} className="reveal">
+              Professional services delivered by our team at Itovio.com. Call <a href="tel:+923481383350" style={{ color: 'var(--accent)', fontWeight: 600 }}>+92 348 1383350</a> for personal discounts.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
+            {[
+              { title: 'Web Development', desc: 'Custom websites, web apps, and e-commerce solutions', price: '$99 - $499' },
+              { title: 'Mobile App Development', desc: 'iOS and Android apps with modern UI/UX', price: '$99 - $1249' },
+              { title: 'AI Solutions', desc: 'Chatbots, automation, and intelligent systems', price: '$49 - $199' },
+              { title: 'UI/UX Design', desc: 'User interface and experience design', price: '$29 - $149' },
+              { title: 'Digital Marketing', desc: 'SEO, social media, and online advertising', price: '$49 - $199/mo' },
+              { title: 'Graphics & Branding', desc: 'Logo design, brand identity, and visual assets', price: '$49 - $199' },
+              { title: 'Content Writing', desc: 'Website copy, blogs, and marketing content', price: '$29 - $99' },
+              { title: 'IT Consulting', desc: 'Technical guidance and project planning', price: '$49 - $149' },
+              { title: 'Enterprise Solutions', desc: 'Large-scale systems and custom development', price: '$799 - $999' },
+            ].map((service, i) => (
+              <div key={i} className={`reveal reveal-delay-${i % 3}`}
+                style={{ 
+                  background: 'var(--bg)', 
+                  border: '1px solid var(--border)', 
+                  borderRadius: 12, 
+                  padding: 24,
+                  transition: 'all 0.3s ease',
+                  cursor: 'default'
+                }}
+                onMouseEnter={e => {
+                  e.target.style.transform = 'translateY(-4px)';
+                  e.target.style.borderColor = 'var(--accent)';
+                  e.target.style.boxShadow = '0 8px 32px rgba(59,130,246,0.15)';
+                }}
+                onMouseLeave={e => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.borderColor = 'var(--border)';
+                  e.target.style.boxShadow = 'none';
+                }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, marginBottom: 8, color: 'var(--text)' }}>
+                  {service.title}
+                </h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 12 }}>
+                  {service.desc}
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--accent)' }}>
+                    {service.price}
+                  </span>
+                  <a href="https://itovio.com" target="_blank" rel="noreferrer" style={{ 
+                    fontSize: 12, 
+                    color: 'var(--accent)', 
+                    textDecoration: 'none',
+                    fontWeight: 600
+                  }}>
+                    Learn More →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 48 }}>
+            <div style={{ 
+              background: 'linear-gradient(135deg, var(--accent), #7c3aed)', 
+              borderRadius: 16, 
+              padding: 32,
+              color: 'white',
+              marginBottom: 24
+            }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 700, marginBottom: 12 }}>
+                Get Personal Discounts
+              </h3>
+              <p style={{ fontSize: 16, marginBottom: 20, opacity: 0.9 }}>
+                Call me directly for exclusive discounts on all Itovio services
+              </p>
+              <a href="tel:+923481383350" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                background: 'white',
+                color: 'var(--accent)',
+                padding: '12px 24px',
+                borderRadius: 8,
+                textDecoration: 'none',
+                fontWeight: 700,
+                fontSize: 16,
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => e.target.style.transform = 'translateY(-2px)'}
+              onMouseLeave={e => e.target.style.transform = 'translateY(0)'}>
+                📞 +92 348 1383350
+              </a>
+            </div>
           </div>
         </div>
       </section>
