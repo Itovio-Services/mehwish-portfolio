@@ -77,7 +77,7 @@ export default function Home() {
             <div className="reveal-slide-right" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {/* Stats */}
               {[
-                { label: 'Projects Completed', value: '5+' },
+                { label: 'Projects Completed', value: '10+' },
                 { label: 'Internship Experience', value: 'U Devs' },
                 { label: 'Certifications', value: '16+' },
                 { label: 'Specialization', value: 'Web Dev' },
@@ -117,14 +117,18 @@ export default function Home() {
           <h2 className="section-title reveal" style={{ marginBottom: 48 }}>Featured Projects</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
             {[
-              { title: 'Personal Portfolio Website', tag: 'HTML/CSS/JS', desc: 'Fully responsive portfolio website showcasing skills and projects with clean, modern design.' },
-              { title: 'Employee Management System', tag: 'React.js', desc: 'CRUD application to manage employee records using component-based architecture and state management.' },
-              { title: 'Frontend Internship Projects', tag: 'U Devs · 2025', desc: 'Contributed to building and improving responsive UIs during internship at U Devs (Oct–Dec 2025).' },
+              { title: 'Mini Social Feed', tag: 'React · Tailwind · React Router', desc: 'Instagram-style social dashboard with posts, likes, comments, and localStorage auth.', live: 'https://mini-social-feed-psi.vercel.app', github: 'https://github.com/Mehwish-riaz/mini-social-feed' },
+              { title: 'Employee Management System', tag: 'React.js', desc: 'CRUD app to manage employee records with component-based architecture and state management.', live: null, github: 'https://github.com/Mehwish-riaz/employee-management-system' },
+              { title: 'CGPA Calculator', tag: 'React.js · JavaScript', desc: 'React-based calculator for students to compute cumulative GPA across multiple semesters.', live: null, github: 'https://github.com/Mehwish-riaz/cgpa-calculator-react' },
             ].map((p, i) => (
               <div key={i} className={`card reveal reveal-delay-${i}`} style={{ padding: 28 }}>
                 <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{p.tag}</span>
                 <h3 style={{ fontSize: 20, fontWeight: 700, margin: '12px 0 10px' }}>{p.title}</h3>
-                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.7 }}>{p.desc}</p>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.7, marginBottom: 16 }}>{p.desc}</p>
+                <div style={{ display: 'flex', gap: 10 }}>
+                  {p.github && <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ fontSize: 12 }}>GitHub →</a>}
+                  {p.live && <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: 12 }}>Live →</a>}
+                </div>
               </div>
             ))}
           </div>

@@ -14,10 +14,10 @@ export default function Navbar() {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+    document.documentElement.setAttribute('data-theme', next);
   };
 
   const isActive = (path) => router.pathname === path;
@@ -38,32 +38,32 @@ export default function Navbar() {
           mehwish<span style={{ color: 'var(--accent)' }}>.</span>
         </Link>
 
-        {/* Desktop Menu */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="desktop-menu">
           {links.map(link => (
             <Link key={link.href} href={link.href} style={{ fontSize: 15, fontWeight: 500, color: isActive(link.href) ? 'var(--accent)' : 'var(--text2)', textDecoration: 'none', transition: 'color 0.2s' }}>
               {link.label}
             </Link>
           ))}
-          <button onClick={toggleTheme} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, width: 40, height: 40, cursor: 'pointer', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button onClick={toggleTheme} aria-label="Toggle theme" style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, width: 40, height: 40, cursor: 'pointer', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-btn" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 24, color: 'var(--text)', display: 'none' }}>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-btn" aria-label="Toggle menu" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 24, color: 'var(--text)', display: 'none' }}>
           {mobileOpen ? '✕' : '☰'}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
-        <div style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '16px 20px' }} className="mobile-menu">
+        <div style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '16px 20px' }}>
           {links.map(link => (
             <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '12px 0', fontSize: 16, fontWeight: 500, color: isActive(link.href) ? 'var(--accent)' : 'var(--text)', textDecoration: 'none', borderBottom: '1px solid var(--border)' }}>
               {link.label}
             </Link>
           ))}
+          <button onClick={toggleTheme} aria-label="Toggle theme" style={{ marginTop: 16, background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, width: 40, height: 40, cursor: 'pointer', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
         </div>
       )}
 

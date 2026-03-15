@@ -16,24 +16,43 @@ function useReveal() {
 const projects = [
   {
     title: 'Personal Portfolio Website',
-    tag: 'HTML · CSS · JavaScript',
-    desc: 'Designed and developed a fully responsive personal portfolio website to showcase my skills, projects, and experience. Focused on clean UI and smooth user experience.',
-    highlights: ['Responsive design', 'Clean UI/UX', 'Cross-browser compatible'],
-    github: 'https://github.com/Mehwish-riaz/',
+    tag: 'HTML · CSS · Bootstrap',
+    desc: 'Personal portfolio website built with HTML, CSS, and Bootstrap to showcase projects, skills, and achievements.',
+    highlights: ['Responsive design', 'Bootstrap layout', 'Clean UI'],
+    github: 'https://github.com/Mehwish-riaz/Personal-Portfolio-Website',
+    live: null,
   },
   {
     title: 'Employee Management System',
-    tag: 'React.js',
-    desc: 'Built a CRUD application to manage employee records. Implemented component-based architecture, state management, and a clean dashboard interface.',
-    highlights: ['CRUD operations', 'React state management', 'Component architecture'],
-    github: 'https://github.com/Mehwish-riaz/',
+    tag: 'React.js · JavaScript',
+    desc: 'CRUD application to manage employee records using component-based architecture and React state management.',
+    highlights: ['CRUD operations', 'React state', 'Component architecture'],
+    github: 'https://github.com/Mehwish-riaz/employee-management-system',
+    live: null,
   },
   {
-    title: 'Frontend Internship — U Devs',
-    tag: 'Internship · Oct–Dec 2025',
-    desc: 'Contributed to building and improving responsive user interfaces during a 3-month frontend internship. Resolved UI layout issues and improved overall usability.',
-    highlights: ['Responsive UI development', 'Bug fixing & layout improvements', 'Team collaboration'],
-    github: null,
+    title: 'Mini Social Feed',
+    tag: 'React · Tailwind CSS · React Router',
+    desc: 'Modern Instagram-style social media dashboard with image/video posts, likes, comments, localStorage-based auth, and fully responsive UI.',
+    highlights: ['React Router', 'Tailwind CSS', 'localStorage auth', 'Responsive'],
+    github: 'https://github.com/Mehwish-riaz/mini-social-feed',
+    live: 'https://mini-social-feed-psi.vercel.app',
+  },
+  {
+    title: 'CGPA Calculator',
+    tag: 'React.js · JavaScript',
+    desc: 'React-based CGPA calculator for students to compute their cumulative GPA across multiple semesters.',
+    highlights: ['React.js', 'GPA logic', 'Student utility'],
+    github: 'https://github.com/Mehwish-riaz/cgpa-calculator-react',
+    live: null,
+  },
+  {
+    title: 'Bakery Website',
+    tag: 'HTML · CSS · JavaScript',
+    desc: 'Modern responsive pink-themed bakery website with hero slider, services section, menu, testimonials, and contact form.',
+    highlights: ['Hero slider', 'Responsive layout', 'CSS animations'],
+    github: 'https://github.com/Mehwish-riaz/Bakery-website',
+    live: null,
   },
 ];
 
@@ -65,10 +84,19 @@ export default function Projects() {
                     <span key={h} style={{ fontSize: 12, padding: '4px 10px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 20, fontWeight: 500 }}>{h}</span>
                   ))}
                 </div>
-                {p.github && (
-                  <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ alignSelf: 'flex-start', fontSize: 13 }}>
-                    View on GitHub →
-                  </a>
+                {(p.github || p.live) && (
+                  <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ alignSelf: 'flex-start', fontSize: 13 }}>
+                        GitHub →
+                      </a>
+                    )}
+                    {p.live && (
+                      <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ alignSelf: 'flex-start', fontSize: 13 }}>
+                        Live Preview →
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             ))}

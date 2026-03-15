@@ -1,30 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zing+Rust+Base+Rough:wght@400;700&display=swap');
 
 :root {
-  --bg: #f8fafc;
+  --bg: #f0f4ff;
   --bg2: #ffffff;
-  --text: #0f172a;
-  --text2: #475569;
-  --muted: #94a3b8;
-  --border: #e2e8f0;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-light: #dbeafe;
-  --font-display: 'Zing Rust Base Rough', 'Space Grotesk', sans-serif;
+  --text: #0d1117;
+  --text2: #4a5568;
+  --muted: #8896a5;
+  --border: #d0daea;
+  --accent: #1d6fe8;
+  --accent-hover: #1558c0;
+  --accent-light: rgba(29, 111, 232, 0.1);
+  --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
 }
 
 [data-theme="dark"] {
-  --bg: #0a0a0f;
-  --bg2: #13131a;
-  --text: #e4e4e7;
-  --text2: #a1a1aa;
-  --muted: #71717a;
-  --border: #27272a;
-  --accent: #7c3aed;
-  --accent-hover: #6d28d9;
-  --accent-light: rgba(124, 58, 237, 0.1);
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --muted: #6e7681;
+  --border: #21262d;
+  --accent: #1d6fe8;
+  --accent-hover: #3b82f6;
+  --accent-light: rgba(29, 111, 232, 0.12);
 }
 
 /* Custom Scrollbar */
