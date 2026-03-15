@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
+    const els = document.querySelectorAll('.reveal, .reveal-slide-left, .reveal-slide-right, .reveal-scale');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, []);
@@ -15,96 +15,66 @@ function useReveal() {
 
 const projects = [
   {
-    tag: 'AI Product', title: 'PrecisionFlow.io',
-    desc: 'An autonomous AI agent that generates daily crypto content for Binance Square — analyzing coins, tracking market sentiment, and publishing posts without human input. Built with Python and custom LLM pipelines.',
-    tech: ['Python', 'AI Agents', 'LLM APIs', 'Crypto APIs', 'Automation'],
-    link: 'https://precisionflow.io', status: 'Live',
+    title: 'Personal Portfolio Website',
+    tag: 'HTML · CSS · JavaScript',
+    desc: 'Designed and developed a fully responsive personal portfolio website to showcase my skills, projects, and experience. Focused on clean UI and smooth user experience.',
+    highlights: ['Responsive design', 'Clean UI/UX', 'Cross-browser compatible'],
+    github: 'https://github.com/Mehwish-riaz/',
   },
   {
-    tag: 'Company', title: 'PrecisionTechInsights',
-    desc: 'A full-stack tech company offering AI development, cybersecurity, Web3, and web services. Founded and operated solo — managing client relationships, project delivery, and product development simultaneously.',
-    tech: ['Business', 'AI', 'Cybersecurity', 'Web3', 'Web Dev'],
-    link: 'https://precisiontechinsights.com', status: 'Live',
+    title: 'Employee Management System',
+    tag: 'React.js',
+    desc: 'Built a CRUD application to manage employee records. Implemented component-based architecture, state management, and a clean dashboard interface.',
+    highlights: ['CRUD operations', 'React state management', 'Component architecture'],
+    github: 'https://github.com/Mehwish-riaz/',
   },
   {
-    tag: 'Services', title: 'Itovio Services',
-    desc: 'White-label reseller hosting infrastructure running on enterprise servers with custom nameservers (ns1/ns2/ns3.harishere.com), SSL management, DirectAdmin, and full client account isolation.',
-    tech: ['DirectAdmin', 'DNS', 'SSL', 'Apache', 'Linux'],
-    link: 'https://itovio.com', status: 'Live',
-  },
-  {
-    tag: 'Personal Brand', title: 'harishere.com',
-    desc: 'This very site — built with Next.js, hosted on my own infrastructure, featuring an AI assistant powered by Claude. Demonstrates my full-stack capabilities across design, development, and deployment.',
-    tech: ['Next.js', 'React', 'CSS', 'Claude API', 'Self-hosted'],
-    link: '#', status: 'Live',
-  },
-  {
-    tag: 'Cybersecurity', title: 'Security Audits',
-    desc: 'Web application security assessments for clients using Kali Linux, Burp Suite, and custom tooling. Reports include vulnerability findings, severity ratings, and actionable remediation steps.',
-    tech: ['Kali Linux', 'Burp Suite', 'OWASP', 'Pen Testing', 'Reporting'],
-    link: '/contact', status: 'Ongoing',
-  },
-  {
-    tag: 'Personal Brand', title: 'Building Personal Brand',
-    desc: 'Building my personal brand on LinkedIn with 5K+ followers by sharing authentic insights about my journey from gaming to CEO. Documenting every step, failure, and breakthrough in AI, cybersecurity, and entrepreneurship.',
-    tech: ['LinkedIn', 'Personal Branding', 'Storytelling', 'Community Building', 'Authentic Content'],
-    link: 'https://linkedin.com/in/itisharis', status: 'Running',
+    title: 'Frontend Internship — U Devs',
+    tag: 'Internship · Oct–Dec 2025',
+    desc: 'Contributed to building and improving responsive user interfaces during a 3-month frontend internship. Resolved UI layout issues and improved overall usability.',
+    highlights: ['Responsive UI development', 'Bug fixing & layout improvements', 'Team collaboration'],
+    github: null,
   },
 ];
 
 export default function Projects() {
   useReveal();
+
   return (
     <Layout>
       <Head>
-        <title>Projects — Haris</title>
-        <meta name="description" content="Projects and products built by Haris — AI agents, cybersecurity, Web3, hosting infrastructure, and more." />
+        <title>Projects — Mehwish Riaz</title>
       </Head>
 
-      {/* Hero */}
-      <section style={{ padding: '100px 0 80px', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 60% at 50% 0%, rgba(123,97,255,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div className="container" style={{ position: 'relative' }}>
-          <p className="section-tag">Projects</p>
-          <h1 className="section-title" style={{ maxWidth: 700, fontSize: 'clamp(40px, 6vw, 72px)' }}>
-            Things I've built.<br /><span style={{ color: 'var(--text2)' }}>And shipped.</span>
-          </h1>
-          <p className="section-sub" style={{ marginTop: 16 }}>Not mockups. Not concepts. Real products running on real infrastructure, serving real users.</p>
-        </div>
-      </section>
-
-      {/* Projects grid */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+          <p className="section-tag reveal">Portfolio</p>
+          <h1 className="section-title reveal" style={{ marginBottom: 16 }}>My Projects</h1>
+          <p className="reveal" style={{ fontSize: 16, color: 'var(--text2)', marginBottom: 56, maxWidth: 560 }}>
+            A collection of projects I've built to strengthen my frontend development skills.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 28 }}>
             {projects.map((p, i) => (
-              <a key={p.title}
-                href={p.link} target={p.link.startsWith('http') ? '_blank' : '_self'} rel="noreferrer"
-                className={`card reveal reveal-delay-${i % 3}`}
-                style={{ padding: '36px 32px', display: 'block', textDecoration: 'none', position: 'relative' }}>
-                {/* Status badge */}
-                <span style={{ position: 'absolute', top: 24, right: 24, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#22c55e', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', padding: '3px 10px', borderRadius: 100 }}>
-                  {p.status}
-                </span>
-                <span style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', display: 'block', marginBottom: 12 }}>{p.tag}</span>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, marginBottom: 12, letterSpacing: '-0.01em' }}>{p.title}</h3>
-                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.75, marginBottom: 24 }}>{p.desc}</p>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {p.tech.map(t => (
-                    <span key={t} style={{ fontSize: 11, padding: '4px 10px', border: '1px solid var(--border)', borderRadius: 100, color: 'var(--muted)', letterSpacing: '0.04em' }}>{t}</span>
+              <div key={i} className={`card reveal reveal-delay-${i}`} style={{ padding: 32, display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>{p.tag}</span>
+                <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 12 }}>{p.title}</h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{p.desc}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+                  {p.highlights.map(h => (
+                    <span key={h} style={{ fontSize: 12, padding: '4px 10px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 20, fontWeight: 500 }}>{h}</span>
                   ))}
                 </div>
-              </a>
+                {p.github && (
+                  <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-ghost" style={{ alignSelf: 'flex-start', fontSize: 13 }}>
+                    View on GitHub →
+                  </a>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
-
-      <style jsx global>{`
-        @media (max-width: 768px) {
-          div[style*="repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </Layout>
   );
 }

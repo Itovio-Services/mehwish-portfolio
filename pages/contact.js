@@ -1,166 +1,109 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import { useState, useEffect } from 'react';
-
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-}
+import { useState } from 'react';
 
 export default function Contact() {
-  useReveal();
-  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
-    
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      
-      if (res.ok) {
-        setStatus('sent');
-        setForm({ name: '', email: '', service: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
+    setStatus('loading');
+    // Simulate success (form not wired yet)
+    setTimeout(() => setStatus('success'), 1000);
   };
-
-  const contacts = [
-    { label: 'Email', value: 'contact@harishere.com', href: 'mailto:contact@harishere.com', icon: '✉' },
-    { label: 'LinkedIn', value: 'linkedin.com/in/itisharis', href: 'https://linkedin.com/in/itisharis', icon: 'in' },
-    { label: 'WhatsApp', value: '+92 348 1383350', href: 'https://wa.me/923481383350', icon: '💬' },
-    { label: 'Location', value: 'Karachi, Pakistan', href: null, icon: '📍' },
-  ];
 
   return (
     <Layout>
       <Head>
-        <title>Contact — Haris</title>
-        <meta name="description" content="Get in touch to discuss your project. Available for AI development, cybersecurity, Web3, and infrastructure work." />
+        <title>Contact — Mehwish Riaz</title>
       </Head>
 
-      <section style={{ padding: '100px 0 80px' }}>
+      <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
-            {/* Left */}
-            <div>
-              <p className="section-tag reveal">Contact</p>
-              <h1 className="section-title reveal" style={{ fontSize: 'clamp(40px, 5vw, 68px)', marginBottom: 24 }}>
-                Let's build something together.
-              </h1>
-              <p style={{ fontSize: 17, color: 'var(--text2)', lineHeight: 1.8, fontWeight: 300, marginBottom: 40 }} className="reveal">
-                Whether you need AI development, security audits, Web3 solutions, or complete digital infrastructure — I'm here to help. Fill out the form or reach out directly.
-              </p>
+          <p className="section-tag">Get In Touch</p>
+          <h1 className="section-title" style={{ marginBottom: 16 }}>Contact Me</h1>
+          <p style={{ fontSize: 16, color: 'var(--text2)', marginBottom: 56, maxWidth: 520 }}>
+            I'm open to internship and entry-level frontend developer opportunities. Feel free to reach out!
+          </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-                {contacts.map((c, i) => (
-                  <div key={i} className={`reveal reveal-delay-${i}`}
-                    style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 20, background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, transition: 'all 0.3s' }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'translateX(4px)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}>
-                    <div style={{ width: 48, height: 48, background: 'var(--accent-light)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>
-                      {c.icon}
-                    </div>
-                    <div>
-                      <p style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 2, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{c.label}</p>
-                      {c.href ? (
-                        <a href={c.href} target="_blank" rel="noreferrer" style={{ fontSize: 15, color: 'var(--text)', fontWeight: 500, textDecoration: 'none' }}>
-                          {c.value}
-                        </a>
-                      ) : (
-                        <p style={{ fontSize: 15, color: 'var(--text)', fontWeight: 500 }}>{c.value}</p>
-                      )}
-                    </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'start' }}>
+            {/* Contact Info */}
+            <div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
+                {[
+                  { label: 'Phone', value: '0370-6586349', href: 'https://wa.me/923706586349' },
+                  { label: 'LinkedIn', value: 'mehwish-riaz-40294b378', href: 'https://www.linkedin.com/in/mehwish-riaz-40294b378' },
+                  { label: 'GitHub', value: 'github.com/Mehwish-riaz', href: 'https://github.com/Mehwish-riaz/' },
+                ].map(item => (
+                  <div key={item.label} className="card" style={{ padding: '20px 24px' }}>
+                    <p style={{ fontSize: 12, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>{item.label}</p>
+                    <a href={item.href} target="_blank" rel="noreferrer" style={{ fontSize: 15, color: 'var(--accent)', fontWeight: 600, textDecoration: 'none' }}>{item.value}</a>
                   </div>
                 ))}
               </div>
+
+              <div className="card" style={{ padding: 24, background: 'var(--accent)', border: 'none' }}>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 8 }}>Open to Opportunities</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7 }}>
+                  Looking for frontend developer internships or entry-level positions. Let's build something great together!
+                </p>
+              </div>
             </div>
 
-            {/* Right - Form */}
-            <div className="reveal" style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: 40 }}>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 700, marginBottom: 24 }}>Send a Message</h3>
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={e => setForm({ ...form, name: e.target.value })}
-                    style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 6, fontSize: 15, color: 'var(--text)', transition: 'border 0.2s' }}
-                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={e => e.target.style.borderColor = 'var(--border)'}
-                  />
+            {/* Contact Form */}
+            <div className="card" style={{ padding: 36 }}>
+              {status === 'success' ? (
+                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8 }}>Message Sent!</h3>
+                  <p style={{ color: 'var(--text2)' }}>Thanks for reaching out. I'll get back to you soon.</p>
+                  <button onClick={() => { setStatus(null); setForm({ name: '', email: '', message: '' }); }} className="btn btn-primary" style={{ marginTop: 24 }}>Send Another</button>
                 </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>Email</label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={e => setForm({ ...form, email: e.target.value })}
-                    style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 6, fontSize: 15, color: 'var(--text)', transition: 'border 0.2s' }}
-                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={e => e.target.style.borderColor = 'var(--border)'}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>Service Interested In</label>
-                  <select
-                    required
-                    value={form.service}
-                    onChange={e => setForm({ ...form, service: e.target.value })}
-                    style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 6, fontSize: 15, color: 'var(--text)', transition: 'border 0.2s' }}
-                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={e => e.target.style.borderColor = 'var(--border)'}>
-                    <option value="">Select a service</option>
-                    <option value="AI Development">AI Development</option>
-                    <option value="Cybersecurity">Cybersecurity</option>
-                    <option value="Web3 Development">Web3 Development</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Infrastructure">Infrastructure</option>
-                    <option value="Personal Branding">Personal Branding</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>Message</label>
-                  <textarea
-                    required
-                    rows={5}
-                    value={form.message}
-                    onChange={e => setForm({ ...form, message: e.target.value })}
-                    style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 6, fontSize: 15, color: 'var(--text)', fontFamily: 'inherit', resize: 'vertical', transition: 'border 0.2s' }}
-                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={e => e.target.style.borderColor = 'var(--border)'}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center' }}>
-                  {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Message Sent! ✓' : status === 'error' ? 'Error - Try Again' : 'Send Message'}
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24 }}>Send a Message</h3>
+                  {[
+                    { name: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
+                    { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
+                  ].map(field => (
+                    <div key={field.name} style={{ marginBottom: 20 }}>
+                      <label htmlFor={field.name} style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>{field.label}</label>
+                      <input
+                        id={field.name}
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        value={form[field.name]}
+                        onChange={e => setForm({ ...form, [field.name]: e.target.value })}
+                        required
+                        style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 14, color: 'var(--text)', outline: 'none', boxSizing: 'border-box', fontFamily: 'var(--font-body)', cursor: 'text', pointerEvents: 'all' }}
+                      />
+                    </div>
+                  ))}
+                  <div style={{ marginBottom: 24 }}>
+                    <label htmlFor="message" style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text2)' }}>Message</label>
+                    <textarea
+                      id="message"
+                      placeholder="Tell me about the opportunity..."
+                      value={form.message}
+                      onChange={e => setForm({ ...form, message: e.target.value })}
+                      required
+                      rows={5}
+                      style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 14, color: 'var(--text)', outline: 'none', resize: 'vertical', boxSizing: 'border-box', fontFamily: 'var(--font-body)', cursor: 'text', pointerEvents: 'all' }}
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={status === 'loading'}>
+                    {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
+        <style jsx>{`
+          @media (max-width: 768px) {
+            div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </section>
     </Layout>
   );
